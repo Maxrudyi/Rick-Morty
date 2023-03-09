@@ -4,7 +4,7 @@ import "./ImageList.css";
 
 const ImageList = ({ data, query }) => {
   const images = data.filter((character) =>
-    character.name.toLowerCase().includes(query)
+    character.name.toLowerCase().includes(query.toLowerCase())
   );
   let sort = images.sort(function (a, b) {
     return a.name.toUpperCase() < b.name.toUpperCase()
