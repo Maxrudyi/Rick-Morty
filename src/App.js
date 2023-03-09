@@ -1,23 +1,35 @@
-import logo from './logo.svg';
-import './App.css';
+import axios from "axios";
+import { useEffect, useState } from "react";
+import { Route, Routes } from "react-router-dom";
+import "./App.css";
+import FacebookLoginComponent from "./Pages/Components/FacebookLogin";
+import Character from "./Pages/Character/Character";
+import Home from "./Pages/Home/Home";
 
 function App() {
+  const [data, setData] = useState([]);
+
+  const getData = async () => {
+    const response = await axios.get(
+      "https://rickandmortyapi.com/api/character"
+    );
+    setData(response.data.results);
+  };
+
+  useEffect(() => {
+    getData();
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <FacebookLoginComponent />
+      <Routes>
+        <Route path="/" element={<Home data={data} />} />
+        <Route
+          path="/character/:characterId"
+          element={<Character data={data} />}
+        />
+      </Routes>
     </div>
   );
 }

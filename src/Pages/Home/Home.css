@@ -1,0 +1,36 @@
+.container {
+  width: 1040px;
+  height: 845px;
+  margin-top: 40px;
+}
+
+.home__img {
+  display: flex;
+  justify-content: center;
+}
+
+.home__img img {
+  width: 600px;
+  height: 200px;
+}
+
+.home__input input {
+  margin-top: 15px;
+  width: 100%;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: white;
+  background-image: url("../../img/IconSearch.png");
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  padding: 12px 20px 12px 40px;
+}
+
+@media (max-width: 635px) {
+  .home__img img {
+    width: 312px;
+    height: 104px;
+  }
+}
